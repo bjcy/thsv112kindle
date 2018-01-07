@@ -1,6 +1,12 @@
 # thsv112kindle
 Grab THSV11 text for personal use on a Kindle.
 
+## Usage
+
+```
+bundle install
+```
+
 ## Dev Notes
 
 http://m.bibles.org/tha-THSV11/Gen/1
