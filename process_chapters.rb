@@ -10,7 +10,7 @@ books.each_index do |i|
 	book_num = i+1
 
 	book_doc = nil
-	book_header_string = "<div id=\"#{book[:abbr]}\"><h1>#{book[:name]}</h1></div>"
+	book_header_string = "<h1 id=\"#{book[:abbr]}\">#{book[:name]}</h1>"
 	book_nav_string = "<div id=\"#{book[:abbr]}_nav\"><p>"
 	book_string = String.new
 	chapter_count = 1
