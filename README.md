@@ -5,9 +5,10 @@ Grab THSV11 text for personal use on a Kindle/iBooks.
 
 ```
 bundle install
-ruby extract_books_data.rb
+ruby extract_books_data.rb > books.json
 ruby download_chapters.rb
 ruby process_chapters.rb
+ruby make_html.rb all
 ./create_ebook.sh || ./create_pdf.sh
 ```
 
