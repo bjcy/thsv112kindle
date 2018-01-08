@@ -1,16 +1,21 @@
+# Dirty html5 page creator for processed books.
 require 'htmlbeautifier'
 
-html_string = '<!doctype html>
-<html class="no-js" lang="">
-<head>
-<meta charset="utf-8">
-</head>
-<body>'
+filename = ARGV[0].to_s
+if File.file?(filename)
+	html_string = '<!doctype html>
+	<html class="no-js" lang="">
+	<head>
+	  <meta charset="utf-8">
+	  <title>พระคัมภีร์ฉบับมาตรฐาน 2011 (THSV11)</title>
+	</head>
+	<body>'
 
-filename = 'books/56-Titus.html'
-book = File.read(filename)
+	book = File.read(filename)
+	html_string += book
+	html_string += '</body></html>'
 
-html_string += book
-html_string += '</body></html>'
-
-puts HtmlBeautifier.beautify(html_string)
+	puts HtmlBeautifier.beautify(html_string)
+else
+	puts "File doesn't exist."
+end
