@@ -22,10 +22,16 @@ books.each_index do |i|
 		chapter = doc.css('.chapter')
 		chapter.search('h5.r').remove # Subheading references
 		chapter.search('.notelink').remove # footnotes/references
-		first_child = chapter.children.first
-		first_child.add_previous_sibling("<h2>#{book[:name]} #{chapter_count}</h2>")
 
-		book_string += chapter.to_s
+		# Create header.
+		chapter_id = chapter.first['id']
+		chapter.first.remove_attribute('id')
+		chapter_header = Nokogiri::XML::Node.new("h2", doc)
+		chapter_header['id'] = chapter_id
+		chapter_header.content = "#{book[:name]} #{chapter_count}"
+		chapter.push(chapter_header)
+
+		book_string += chapter.reverse.to_s
 		book_nav_string += "<a href=\"\##{chapter.first['id']}\">#{book[:name]} #{chapter_count}</a>&nbsp;"
 		chapter_count += 1
 	end
