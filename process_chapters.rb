@@ -15,7 +15,7 @@ books.each_index do |i|
 	book_string = String.new
 	chapter_count = 1
 	Dir.glob("raw/#{book_num.to_s.rjust(2, '0')}*.html").sort.each do |filename|
-		#puts "Processing #{filename}..."
+		puts "Processing #{filename}..."
 		doc = File.open(filename) { |f| Nokogiri::XML(f) }
 		doc.encoding = 'UTF-8'
 
@@ -32,7 +32,8 @@ books.each_index do |i|
 		chapter.push(chapter_header)
 
 		book_string += chapter.reverse.to_s
-		book_nav_string += "<a href=\"\##{chapter_id}\">#{book[:name]} #{chapter_count}</a>&nbsp;"
+		book_nav_string_link = "#{book[:name]} #{chapter_count}"
+		book_nav_string += " <a href=\"\##{chapter_id}\" class=\"nobr\">#{book_nav_string_link.gsub(" ","&nbsp;")}</a>&nbsp;&nbsp;&nbsp;"
 		chapter_count += 1
 	end
 
