@@ -32,7 +32,7 @@ books.each_index do |i|
 		chapter.push(chapter_header)
 
 		book_string += chapter.reverse.to_s
-		book_nav_string += "<a href=\"\##{chapter.first['id']}\">#{book[:name]} #{chapter_count}</a>&nbsp;"
+		book_nav_string += "<a href=\"\##{chapter_id}\">#{book[:name]} #{chapter_count}</a>&nbsp;"
 		chapter_count += 1
 	end
 
